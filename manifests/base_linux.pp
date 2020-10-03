@@ -19,15 +19,15 @@ class profiles::base_linux (
     User {
       ensure     => present,
       managehome => true,
-      groups     => ['wheel']
+      groups     => ['sudo']
     }
     class { 'sudo':
       purge               => false,
       config_file_replace => false,
     }
-    sudo::conf { 'wheel':
+    sudo::conf { 'sudo':
       priority => 1,
-      content  => '%wheel ALL=(ALL) NOPASSWD: ALL',
+      content  => '%sudo ALL=(ALL) NOPASSWD: ALL',
     }
     create_resources(user, $managed_users_hash)
   }

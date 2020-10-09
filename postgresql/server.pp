@@ -11,3 +11,4 @@ class profile::postgresql::server (
   create_resources('::postgresql::server::db', $dbs)
 
 }
+

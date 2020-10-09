@@ -9,6 +9,14 @@ class profiles::postgresql::server {
   create_resources('::postgresql::server::db', $dbs)
 
   $roles = hiera_hash('profiles::postgresql::server::roles', {})
-  create_resources('::postgresql::server::db', $roles)
+  create_resources('::postgresql::server::role', $roles)
 }
 
+for i in puppet-hiera puppet-profiles puppet-roles
+do
+cd $i
+git add *
+git commit -m "Updating hiera"
+git push
+cd ..
+done

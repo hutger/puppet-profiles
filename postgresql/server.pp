@@ -1,6 +1,6 @@
-# modules/profile/manifests/postgresql/server.pp
+# modules/profiles/manifests/postgresql/server.pp
 
-class profile::postgresql::server (
+class profiles::postgresql::server (
   Optional[Hash]  $profile::postgresql::server::dbs = undef, 
 ){
   include '::postgresql::server'

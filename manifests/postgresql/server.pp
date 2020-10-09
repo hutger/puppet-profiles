@@ -12,7 +12,7 @@ class profiles::postgresql::server {
   create_resources('::postgresql::server::role', $roles)
 }
 
-for i in puppet-hiera puppet-profiles puppet-roles
+for i in puppet-profiles puppet-roles puppet-hiera
 do
 cd $i
 git add *

@@ -1,5 +1,4 @@
 # Base profile containg all the configuration
-
 class profiles::base_linux (
   Boolean         $manage_users           = false,
   Boolean         $manage_ssh_keys        = false,

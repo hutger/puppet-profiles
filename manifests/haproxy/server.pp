@@ -9,5 +9,5 @@ class profiles::haproxy::server {
 
   #create_resources('::haproxy::listen',   $haproxy_listen_services)
   create_resources('::haproxy::frontend', $haproxy_frontends)
-  #create_resources('::haproxy::backend',  $haproxy_backends)
+  create_resources('::haproxy::backend',  $haproxy_backends)
 }

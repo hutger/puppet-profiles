@@ -7,7 +7,7 @@ class profiles::haproxy::server {
   $haproxy_frontends         = hiera_hash('roles::haproxy::server::frontends',         {})
   $haproxy_backends          = hiera_hash('roles::haproxy::server::backends',          {})
 
-  create_resources('::haproxy::listen',   $haproxy_listen_services)
+  #create_resources('::haproxy::listen',   $haproxy_listen_services)
   create_resources('::haproxy::frontend', $haproxy_frontends)
-  create_resources('::haproxy::backend',  $haproxy_backends)
+  #create_resources('::haproxy::backend',  $haproxy_backends)
 }

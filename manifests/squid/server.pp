@@ -11,7 +11,7 @@ class profiles::squid::server (
   $squid_acls         = hiera_hash('roles::squid::server::acls',          {})
   $squid_http_accesses  = hiera_hash('roles::squid::server::http_accesses',          {})
 
-  create_resources('::squid', 'cache_mem => $cache_mem')
+  create_resources('::squid', cache_mem => $cache_mem)
   create_resources('::squid::http_port', $squid_http_port)
   create_resources('::squid::cache_dir', $squid_cache_dir)
   create_resources('::squid::acl',  $squid_acls)

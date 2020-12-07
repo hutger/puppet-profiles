@@ -5,9 +5,8 @@ class profiles::squid::server {
 
 #  $squid_server       = hiera_hash('roles::squid::server', {})
   $cache_mem          = hiera('roles::squid::server::cache_mem', {value_type => String, default_value => '512 MB'})
-  $workers            = hiera('roles::squid::server::workers', {value_type => String, default_value => '3'})
+  $workers            = hiera('roles::squid::server::workers', {value_type => Integer })
   $coredump_dir       = hiera('roles::squid::server::coredump_dir', {value_type => String, default_value => ''})
-  $http_ports          = hiera('roles::squid::server::http_ports', {value_type => String, default_value => '3128'})
 
 
   $squid_http_port    = hiera_hash('roles::squid::server::http_port',         {})
@@ -19,7 +18,6 @@ class profiles::squid::server {
     cache_mem    => $cache_mem,
     workers      => $workers,
     coredump_dir => $coredump_dir,
-    http_ports   => $http_ports
   }
 
 #create_resources('::squid', $squid_server)

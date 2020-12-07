@@ -11,7 +11,7 @@ class profiles::squid::server {
   $squid_http_accesses  = hiera_hash('roles::squid::server::http_accesses',          {})
 
   class { 'squid':
-    cache_mem => '512 MB'
+    cache_mem => $cache_mem
   }
 
 #create_resources('::squid', $squid_server)

@@ -4,7 +4,7 @@ class profiles::squid::server {
   #include 'squid'
 
 #  $squid_server       = hiera_hash('roles::squid::server', {})
-  $cache_mem          = hiera('roles::squid::server:cache_mem', {value_type => String, default_value => '512 MB'})
+  $cache_mem          = hiera('roles::squid::server::cache_mem', {value_type => String, default_value => '512 MB'})
   $squid_http_port    = hiera_hash('roles::squid::server::http_port',         {})
   $squid_cache_dir    = hiera_hash('roles::squid::server::cache_dir',         {})
   $squid_acls         = hiera_hash('roles::squid::server::acls',          {})

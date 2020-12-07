@@ -11,10 +11,8 @@ class profiles::squid::server (
   $squid_acls         = hiera_hash('roles::squid::server::acls',          {})
   $squid_http_accesses  = hiera_hash('roles::squid::server::http_accesses',          {})
 
-  notify {"Message from elsewhere: $cache_mem"}
-
   class { '::squid':
-    cache_mem         => $cache_mem,
+    cache_mem         => $cache_mem
   }
 
 #  create_resources('::squid', $squid_server)

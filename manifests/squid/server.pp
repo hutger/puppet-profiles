@@ -3,7 +3,7 @@
 class profiles::squid::server {
   include 'squid'
 
-  $squid_basics       = hiera_hash('roles::squid::server::basics')
+  $squid_basics       = hiera_hash('roles::squid::server::basics::cache_mem')
   $squid_cache_dir    = hiera_hash('roles::squid::server::cache_dir',         {})
   $squid_acls         = hiera_hash('roles::squid::server::acls',          {})
   $squid_http_accesses  = hiera_hash('roles::squid::server::http_accesses',          {})

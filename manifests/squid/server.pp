@@ -1,17 +1,20 @@
 # This role builds puppet master server
 
-class profiles::squid::server (
-  String  $cache_mem = lookup('roles::squid::server:cache_mem', {value_type => String, default_value => '512'})
-){
+class profiles::squid::server {
   include 'squid'
 
 #  $squid_server       = hiera_hash('roles::squid::server', {})
+  $cache_mem          = hiera('roles::squid::server:cache_mem', {value_type => String, default_value => '512 MB'})
   $squid_http_port    = hiera_hash('roles::squid::server::http_port',         {})
   $squid_cache_dir    = hiera_hash('roles::squid::server::cache_dir',         {})
   $squid_acls         = hiera_hash('roles::squid::server::acls',          {})
   $squid_http_accesses  = hiera_hash('roles::squid::server::http_accesses',          {})
 
-  create_resources('::squid', cache_mem => $cache_mem)
+  class { '::squid':
+    cache_mem => '512 MB'
+  }
+
+#create_resources('::squid', $squid_server)
   create_resources('::squid::http_port', $squid_http_port)
   create_resources('::squid::cache_dir', $squid_cache_dir)
   create_resources('::squid::acl',  $squid_acls)

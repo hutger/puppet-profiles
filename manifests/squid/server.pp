@@ -1,7 +1,7 @@
 # This role builds puppet master server
 
 class profiles::squid::server (
-  String  $cache_mem = {}
+  String  $cache_mem = lookup('roles::squid::server:cache_mem', {value_type => String, default_value => '512'})
 ){
   include 'squid'
 

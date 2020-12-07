@@ -1,7 +1,7 @@
 # This role builds puppet master server
 
 class profiles::squid::server {
-  include 'squid'
+  #include 'squid'
 
 #  $squid_server       = hiera_hash('roles::squid::server', {})
   $cache_mem          = hiera('roles::squid::server:cache_mem', {value_type => String, default_value => '512 MB'})
@@ -10,7 +10,7 @@ class profiles::squid::server {
   $squid_acls         = hiera_hash('roles::squid::server::acls',          {})
   $squid_http_accesses  = hiera_hash('roles::squid::server::http_accesses',          {})
 
-  class { '::squid':
+  class { 'squid':
     cache_mem => '512 MB'
   }
 

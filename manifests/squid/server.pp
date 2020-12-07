@@ -8,6 +8,7 @@ class profiles::squid::server {
   $squid_acls         = hiera_hash('roles::squid::server::acls',          {})
   $squid_http_accesses  = hiera_hash('roles::squid::server::http_accesses',          {})
 
+  cache_mem => lookup ('roles::squid::server::basics::cache_mem')
   create_resources('::squid', 'roles::squid::server::basics::cache_mem')
   create_resources('::squid::cache_dir', $squid_cache_dir)
   create_resources('::squid::acl',  $squid_acls)

@@ -1,11 +1,11 @@
 # Base profile containg all the configuration
 class profiles::netplan (
-    $version = hiera('netplan::version', 2 ),
-    $renderer = hiera('netplan::renderer', 'networkd'),
-    $config_file = hiera('netplan::config_file', '/etc/netplan/01-custom.yaml'),
-    $purge_config = hiera('netplan::purge_config', 'true'),
-    $netplan_apply = hiera('netplan::netplan_apply', 'true'),
-    $ethernets = hiera_hash('netplan::ethernets', {}),
+    $version = hiera('profiles::netplan::version', 2 ),
+    $renderer = hiera('profiles::netplan::renderer', 'networkd'),
+    $config_file = hiera('profiles::netplan::config_file', '/etc/netplan/01-custom.yaml'),
+    $purge_config = hiera('profiles::netplan::purge_config', 'true'),
+    $netplan_apply = hiera('profiles::netplan::netplan_apply', 'true'),
+    $ethernets = hiera_hash('profiles::netplan::ethernets', {}),
 ){
   class { 'netplan':
     version     => $version,
@@ -14,6 +14,6 @@ class profiles::netplan (
     ethernets   => $ethernets,
   }
 
-  $ethernets = hiera_hash('netplan::ethernets', {})
+  $ethernets = hiera_hash('profiles::netplan::ethernets', {})
   create_resources('netplan::ethernets', $ethernets)
 }

@@ -14,5 +14,6 @@ class profiles::netplan (
     ethernets   => $ethernets,
   }
 
+  $ethernets = hiera_hash('netplan::ethernets', {})
   create_resources('netplan::ethernets', $ethernets)
 }

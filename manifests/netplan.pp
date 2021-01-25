@@ -12,5 +12,7 @@ class profiles::netplan (
     renderer    => $renderer,
     config_file => $config_file,
     ethernets   => $ethernets,
-}
+  }
+
+  create_resources('netplan::ethernets', $ethernets)
 }

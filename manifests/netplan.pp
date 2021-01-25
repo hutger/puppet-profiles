@@ -1,8 +1,7 @@
 # Base profile containg all the configuration
-class profiles::netplan2 (
+class profiles::netplan (
 ){
-  include 'netplan'
-
+  class { 'netplan':
     config_file   => '/etc/netplan/01-custom.yaml',
     ethernets     => {
       'ens5' => {

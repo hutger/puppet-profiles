@@ -6,6 +6,8 @@ class profiles::netplan (
     $purge_config = hiera('profiles::netplan::purge_config', true),
     $netplan_apply = hiera('profiles::netplan::netplan_apply', true),
     $ethernets = hiera_hash('profiles::netplan::ethernets', {}),
+    $bridges = hiera_hash('profiles::netplan::bridges', {})
+
 ){
   class { 'netplan':
     version       => $version,
@@ -14,11 +16,7 @@ class profiles::netplan (
     purge_config  => $purge_config,
     netplan_apply => $netplan_apply,
     ethernets     => $ethernets,
+    bridges       => $bridges,
   }
 
-#  $ethernets = hiera_hash('profiles::netplan::ethernets', {})
-#  create_resources('netplan::ethernets', $ethernets)
-
-  $bridges = hiera_hash('profiles::netplan::bridges', {})
-  create_resources('netplan::bridges', $bridges)
 }

@@ -5,7 +5,7 @@ class profiles::netplan (
     $config_file = hiera('profiles::netplan::config_file', '/etc/netplan/01-custom.yaml'),
     $purge_config = hiera('profiles::netplan::purge_config', 'true'),
     $netplan_apply = hiera('profiles::netplan::netplan_apply', 'true'),
-    $ethernets = hiera_hash('profiles::netplan::ethernets', {}),
+    #$ethernets = hiera_hash('profiles::netplan::ethernets', {}),
 ){
   class { 'netplan':
     version     => $version,

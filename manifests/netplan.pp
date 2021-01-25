@@ -1,5 +1,5 @@
 # Base profile containg all the configuration
-class profiles::netplan (
+class profiles::netplan2 (
 ){
   include 'netplan'
 

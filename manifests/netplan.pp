@@ -1,6 +1,6 @@
 # Base profile containg all the configuration
 class profiles::netplan (
-    $version = hiera('netplan::version', '2'),
+    $version = hiera('netplan::version', {}),
     $renderer = hiera('netplan::renderer', 'networkd'),
     $config_file = hiera('config_file', '/etc/netplan/01-custom.yaml'),
     $purge_config = hiera('purge_config', 'true'),

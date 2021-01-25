@@ -9,6 +9,12 @@ class profiles::netplan (
     $bridges = hiera_hash('profiles::netplan::bridges', {})
 
 ){
+
+  # Install netplan.io package
+  package { 'netplan.io':
+    ensure => 'installed',
+  }
+
   class { 'netplan':
     version       => $version,
     renderer      => $renderer,

@@ -3,8 +3,8 @@ class profiles::netplan (
     $version = hiera('profiles::netplan::version', 2 ),
     $renderer = hiera('profiles::netplan::renderer', 'networkd'),
     $config_file = hiera('profiles::netplan::config_file', '/etc/netplan/01-custom.yaml'),
-    $purge_config = hiera('profiles::netplan::purge_config', 'true'),
-    $netplan_apply = hiera('profiles::netplan::netplan_apply', 'true'),
+    $purge_config = hiera('profiles::netplan::purge_config', true),
+    $netplan_apply = hiera('profiles::netplan::netplan_apply', true),
 ){
   class { 'netplan':
     version       => $version,

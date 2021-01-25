@@ -2,10 +2,10 @@
 class profiles::netplan (
     $version = hiera('netplan::version', 2 ),
     $renderer = hiera('netplan::renderer', 'networkd'),
-    $config_file = hiera('config_file', '/etc/netplan/01-custom.yaml'),
-    $purge_config = hiera('purge_config', 'true'),
-    $netplan_apply = hiera('netplan_apply', 'true'),
-    $ethernets = hiera('netplan::ethernets', {}),
+    $config_file = hiera('netplan::config_file', '/etc/netplan/01-custom.yaml'),
+    $purge_config = hiera('netplan::purge_config', 'true'),
+    $netplan_apply = hiera('netplan::netplan_apply', 'true'),
+    $ethernets = hiera_hash('netplan::ethernets', {}),
 ){
   class { 'netplan':
     version     => $version,

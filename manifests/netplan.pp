@@ -15,6 +15,14 @@ class profiles::netplan (
     ensure => 'installed',
   }
 
+  # Replacing the default network interface file
+  file { '/etc/network/interfaces':
+    ensure  => 'present',
+    replace => 'yes',
+    content => 'auto lo \niface lo inet loopback',
+    mode    => '0644',
+  }
+
   class { 'netplan':
     version       => $version,
     renderer      => $renderer,

@@ -15,7 +15,7 @@ class profiles::netplan (
   }
 
   $ethernets = hiera_hash('profiles::netplan::ethernets', {})
-  create_resources('netplan::ethernets', $ethernets)
+  create_resources('netplan', $ethernets)
 
   $bridges = hiera_hash('profiles::netplan::bridges', {})
   create_resources('netplan::bridges', $bridges)

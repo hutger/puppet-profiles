@@ -16,7 +16,7 @@ class profiles::netplan (
     purge_config  => $purge_config,
     netplan_apply => $netplan_apply,
     ethernets     => $ethernets,
-    bridges       => $bridges,
+    #bridges       => $bridges,
   }
 
 }

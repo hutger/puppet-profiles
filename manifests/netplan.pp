@@ -17,8 +17,10 @@ class profiles::netplan (
 
   # Replacing the default network interface file
 
-  $lo = "auto lo
-        iface lo inet loopback"
+  $lo = "# Managed by Puppet
+    auto lo
+    iface lo inet loopback
+    "
 
   file { '/etc/network/interfaces':
     ensure  => 'present',
